@@ -1,0 +1,31 @@
+{
+  "ServerConfig": {
+    "ListenAddress": "127.0.0.1:8000",
+    "StateFile": "status.json"
+  },
+  "Watches": {
+    "foo": {
+      "Interval": "1m",
+      "OnExpiry": "(date && set | grep ^WOOF) >> foo-vars"
+    },
+    "bar": {
+      "Interval": "30m",
+      "OnExpiry": "(date && set | grep ^WOOF) >> bar-vars"
+    },
+    "baz": {
+      "Interval": "1h",
+      "Trigger": "manual",
+      "OnExpiry": "(date && set | grep ^WOOF) >> baz-vars"
+    },
+    "autosave": {
+      "Interval": "10s",
+      "Trigger": "periodic",
+      "OnExpiry": "kill -HUP $WOOF_PID"
+    },
+    "selfpost": {
+      "Interval": "50s",
+      "Trigger": "periodic",
+      "OnExpiry": "curl -X POST http://localhost:8000/foo"
+    }
+  }
+}

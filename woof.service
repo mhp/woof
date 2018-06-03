@@ -1,0 +1,20 @@
+; Woof! systemd service unit file
+; Place in e.g. `/etc/systemd/system/woof.service`, then `systemctl daemon-reload` and `service woof start`.
+
+[Unit]
+Description=Woof
+Requires=network.target
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/pi/woof
+User=pi
+
+Restart=always
+RestartSec=10
+
+ExecStart=/home/pi/woof/woof config.json
+
+[Install]
+WantedBy=multi-user.target
