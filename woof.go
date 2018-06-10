@@ -186,5 +186,6 @@ func main() {
 
 	if err := http.ListenAndServe(serverConfig.ListenAddress, allWatches); err != nil {
 		fmt.Println(err)
+		os.Exit(1)
 	}
 }
