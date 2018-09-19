@@ -1,5 +1,5 @@
 ; Woof! systemd service unit file
-; Place in e.g. `/etc/systemd/system/woof.service`, then `systemctl daemon-reload` and `service woof start`.
+; Install with: `sudo systemctl enable $(readlink -d woof.service)`
 
 [Unit]
 Description=Woof
